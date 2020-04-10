@@ -1,0 +1,133 @@
+{
+  "uri": "root",
+  "projects": [
+    {
+      "name": "H.265编解码器9550A_V3_资料存档",
+      "uri": "/mnt/d/Programming/Tegra/proj9550Av3",
+      "version": "app/console/console_param.c",
+      "author": "李学良",
+      "dirs": {
+        "app": {
+          "content": "9550A V3源代码",
+          "function": "9550A V3源代码"
+        },
+        "web_9550A": {
+          "content": "9550A V3 Web",
+          "function": "9550A V3 Web"
+        },
+        "doc": {
+          "content": "9550A V3 文档",
+          "function": "9550A V3 文档"
+        }
+      },
+      "descript": {
+        "content": "9550A V3 资料存档",
+        "function": "9550A V3 资料存档"
+      }
+    },
+    {
+        "name": "高清视频会议终端JV210_资料存档",
+        "uri": "/mnt/d/Programming/DaVinci/JV210",
+        "version": "app/suma_demos/core/demo.c",
+        "author": "申胜军",
+        "dirs": {
+            "app": {
+                "content": "JV210源代码",
+                "function": "JV210源代码"
+            }
+        },
+        "descript": {
+            "content": "JV210 资料存档",
+            "function": "JV210 资料存档"
+        }
+    },
+    {
+        "name": "高清视频会议终端JV220_资料存档",
+        "uri": "/mnt/d/Programming/Tegra/JV220v1.2",
+        "version": "app/console/console_param.c",
+        "author": "申胜军",
+        "dirs": {
+            "app": {
+                "content": "JV220源代码",
+                "function": "JV220源代码"
+            }
+        },
+        "descript": {
+            "content": "JV220 资料存档",
+            "function": "JV220 资料存档"
+        }
+    },
+    {
+        "name": "多路编解码器9558A_资料存档",
+        "uri": "/mnt/d/Programming/HiSi/proj9558A",
+        "version": "proj9350M/app/dec_app/core/core.c",
+        "author": "王炳建",
+        "dirs": {
+            "proj9350M": {
+                "content": "9558A源代码",
+                "function": "9558A源代码"
+            },
+            "proj9550L": {
+                "content": "9558A源代码",
+                "function": "9558A源代码"
+            },
+            "proj9558A": {
+                "content": "9558A源代码",
+                "function": "9558A源代码"
+            }
+        },
+        "descript": {
+            "content": "9558A 资料存档",
+            "function": "9558A 资料存档"
+        }
+    },
+    {
+        "name": "HL3000_资料存档",
+        "uri": "/mnt/d/Programming/HiSi/HL3000",
+        "version": "app/console/console_param.c",
+        "author": "李新",
+        "dirs": {
+            "app": {
+                "content": "HL3000源代码",
+                "function": "HL3000源代码"
+            }
+        },
+        "descript": {
+            "content": "HL3000 资料存档",
+            "function": "HL3000 资料存档"
+        }
+    },
+    {
+        "name": "9350EV3_资料存档",
+        "uri": "/mnt/d/Programming/xlnx/proj9350Ev3",
+        "version": "app/console/console_param.c",
+        "author": "冯凯凯",
+        "dirs": {
+            "app": {
+                "content": "9350EV3源代码",
+                "function": "9350EV3源代码"
+            }
+        },
+        "descript": {
+            "content": "9350EV3 资料存档",
+            "function": "9350EV3 资料存档"
+        }
+    },
+    {
+        "name": "9576_资料存档",
+        "uri": "/mnt/d/Programming/xlnx/projJAVS",
+        "version": "app/console/console_param.c",
+        "author": "李学良",
+        "dirs": {
+            "app": {
+                "content": "JAVS源代码",
+                "function": "JAVS源代码"
+            }
+        },
+        "descript": {
+            "content": "JAVS 资料存档",
+            "function": "JAVS 资料存档"
+        }
+    }
+  ]
+}
