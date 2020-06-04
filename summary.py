@@ -19,7 +19,7 @@ TITLE='summary'
 STICKY_FULL = tk.N + tk.S + tk.W + tk.E 
 PAD_DEFAULT = 5
 
-PATH='d:\\Users\\zhlx\\Documents\\stuff\\7.部门工作\\2019'
+PATH='d:\\Users\\zhlx\\Dropbox\\Work\\Administrant\\7.部门工作\\2020'
 LISTS=('考核等级', '考核分数')
 
 class summary(tk.Frame):
