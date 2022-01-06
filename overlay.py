@@ -6,6 +6,9 @@ import winreg as reg
 
 # names of all overlay icons that shall be boosted:
 
+# The full identifiers menu
+# https://en.wikipedia.org/wiki/List_of_shell_icon_overlay_identifiers
+
 boost = """
     Tortoise1Normal
     Tortoise2Modified
@@ -16,11 +19,7 @@ boost = """
     Tortoise9Unversioned
     DropboxExt01
     DropboxExt02
-    DropboxExt05
     DropboxExt07
-    OneDrive1
-    OneDrive2
-    OneDrive3
     OneDrive4
 """
 
