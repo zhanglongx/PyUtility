@@ -15,11 +15,13 @@ import tkinter.ttk as ttk
 import numpy as np
 import pandas as pd
 
+from tabulate import tabulate
+
 TITLE='summary'
 STICKY_FULL = tk.N + tk.S + tk.W + tk.E 
 PAD_DEFAULT = 5
 
-PATH='d:\\Users\\zhlx\\Dropbox\\Work\\Administrant\\7.部门工作\\2020'
+PATH='d:\\Users\\zhlx\\Dropbox\\Work\\Administrant\\7.部门工作\\2021'
 LISTS=('考核等级', '考核分数')
 
 class summary(tk.Frame):
@@ -66,37 +68,44 @@ class summary(tk.Frame):
         if not os.path.exists(self._path):
             raise OSError('%s not exists' % self._path)
 
-        _tab_list = []
-        _month_list = []
+        tab_list = dict()
         for f in glob.iglob(self._path + '/**/月度考核表_*.xls', recursive=True):
             try:
-                _month = re.search(r'(\d+)月', f).group(0)
+                month = re.search(r'(\d+)月', f).group(1)
             except:
                 Warning('%s: filename is invalid' % f)
                 continue
 
-            _month_list.append(_month)
-
             # FIXME: header is hard-coded
-            _month_tab = pd.read_excel(f, header=2, index_col=0, usecols='B:F')
+            grade = pd.read_excel(f, header=2, index_col=0, usecols='B:F')
 
             # drop index as nan:
             # https://stackoverflow.com/questions/19670904/trying-to-drop-nan-indexed-row-in-dataframe
-            _month_tab = _month_tab[_month_tab.index.notnull()]
-            _month_tab.replace('B', np.NaN, inplace=True)
-            _month_tab.dropna(0, how='all', inplace=True)
+            grade = grade[grade.index.notnull()]
+            grade.replace('B', np.NaN, inplace=True)
+            grade.dropna(0, how='all', inplace=True)
 
             # FIXME: the only NaN is grade
-            _month_tab.fillna(' ', inplace=True)
+            grade.fillna(' ', inplace=True)
 
-            _tab_list.append(_month_tab)
+            # FIXME: workaround to drop 'sum' row
+            dropIndex = [i for i in grade.index.values if isinstance(i, int)]
+            grade.drop(dropIndex, inplace=True)
 
-        _tab = pd.concat(_tab_list, axis=1, keys=_month_list, names=['月份', '分类'], sort=True)
+            if month not in tab_list:
+                tab_list[month] = grade
+            else:
+                tab_list[month] = pd.concat([tab_list[month], grade])
+
+        objs = [tab_list[m] for m in tab_list]
+        _tab = pd.concat(objs, axis=1, keys=tab_list.keys(), names=['月份', '分类'], sort=True)
 
         _tab = _tab.loc[slice(None), (slice(None), _col)]
         _tab.columns = _tab.columns.droplevel(level=1) 
 
-        _output = _col + '\n--------\n' + _tab.to_string(col_space=4, index_names=False)
+        content = tabulate(_tab, headers=_tab.columns)
+
+        _output = _col + '\n--------\n' + content
         # workaround: align table
         _output = re.sub(r'^(\w\w)\s', r'\1  ', _output, flags=re.M)
 
