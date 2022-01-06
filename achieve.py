@@ -66,16 +66,7 @@ class achieve:
 
             _zip = os.path.join(TMP, _name, _name + '.zip')
 
-            # FIXME: remove hard-coded 'components',
-            #        like using dynamic action
-            _comp_dir = os.path.join(_uri, 'app', 'components')
-            if not os.path.exists(_comp_dir):
-                _comp_dir = None
-            else:
-                _ = sub.Popen(['make', 'fetch-all'], cwd=_comp_dir)
-                _.wait()
-
-            self.__export(uri=_uri, output=_zip, extra=_comp_dir, update=True)
+            self.__export(uri=_uri, output=_zip, extra=None, update=True)
 
             self.__docx(_name, False, **self.__check_dir(uri=_uri, ver=_ver, **p['dirs']))
 
