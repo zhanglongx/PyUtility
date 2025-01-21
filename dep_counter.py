@@ -35,34 +35,25 @@ STICKY_FULL = tk.N + tk.S + tk.W + tk.E
 PAD_DEFAULT = 5
 
 ALL_NAMES={
-    '董家炜': 'dongjiawei@sumavision.cn',
     '张迪':   'zhangdi@sumavision.cn',
+    '卢文雄': 'luwenxiong@sumavision.cn',
+    '白伟': 'baiwei@sumavision.cn',
     '赵晨辉': 'zhaochenhui@sumavision.cn',
-    '韩飞':   'hanfei@sumavision.cn',
-    '梁彪':   'liangbiao@sumavision.cn',
-    '李学良': 'lixueliang@sumavision.cn',
     '马辉辉': 'mahuihui@sumavision.cn',
-    '李树超': 'lishuchao@sumavision.cn',
-    '冯凯凯': 'fengkaikai@sumavision.cn',
-    '王健':   'wangjian@sumavision.cn',
-    '王炳建': 'wangbingjian@sumavision.cn',
-    '杨历凡': 'yanglifan@sumavision.cn',
     '庞志远': 'pangzhiyuan@sumavision.cn',
     '闫小超': 'yanxiaochao@sumavision.cn',
     '闫勇':   'yanyong@sumavision.cn',
+    '王召':  'wangzhao@sumavision.cn',
     '王凯':   'wangkai@sumavision.cn',
     '刘灿':   'liucan@sumavision.cn',
     '李士勇': 'lishiyong@sumavision.cn',
     '张向辉': 'zhangxianghui@sumavision.cn',
     '程炜':   'chengwei@sumavision.cn',
-    '魏永彬': 'weiyongbin@sumavision.cn',
-    '王博':   'wangbo@sumavision.cn',
     '赵亚洋': 'zhaoyayang@sumavision.cn',
-    '赵宁':   'zhaoning@sumavision.cn',
     '李绪晨': 'lixuchen@sumavision.cn',
-    '卢文雄': 'luwenxiong@sumavision.cn',
-    '付书山': 'fushushan@sumavision.cn',
-    '姜东超': 'jiangdongchao@sumavision.cn'}
+    '姜东超': 'jiangdongchao@sumavision.cn',
+    '梁磊': 'lianglei@sumavision.cn'
+    }
 
 class Application(tk.Frame):
     def __init__(self, master=None):
@@ -112,7 +103,8 @@ class Application(tk.Frame):
         self.clipboard_append(';'.join([ALL_NAMES[m] for m in _missing]))
 
         # summary report
-        self._input.insert(tk.INSERT, '\n-----\n%d email(s) have been copied to clipboard' % len(_missing))
+        self._input.insert(tk.INSERT, 
+            '\n-----\n%d email(s) have been copied to clipboard' % len(_missing))
 
 def main():
     root = tk.Tk()
