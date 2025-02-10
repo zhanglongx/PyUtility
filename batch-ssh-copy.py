@@ -89,4 +89,6 @@ def main():
         push_key_to_host(host, host_user, pubkey_path)
 
 if __name__ == "__main__":
+    if os.name != 'posix':
+        raise OSError("This script only runs on Linux/Unix platforms")
     main()
