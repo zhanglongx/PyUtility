@@ -17,11 +17,13 @@ import pandas as pd
 
 from tabulate import tabulate
 
+pd.set_option('future.no_silent_downcasting', True)
+
 TITLE='summary'
 STICKY_FULL = tk.N + tk.S + tk.W + tk.E 
 PAD_DEFAULT = 5
 
-PATH='d:\\Users\\zhlx\\Dropbox\\Work\\Administrant\\7.部门工作\\2022'
+PATH='d:\\Users\\zhlx\\Dropbox\\Work\\Administrant\\7.部门工作\\2025'
 #LISTS=('考核等级', '考核分数')
 LISTS=('考核等级')
 
@@ -83,11 +85,12 @@ class summary(tk.Frame):
             # drop index as nan:
             # https://stackoverflow.com/questions/19670904/trying-to-drop-nan-indexed-row-in-dataframe
             grade = grade[grade.index.notnull()]
-            grade.replace('B', np.NaN, inplace=True)
-            grade.dropna(0, how='all', inplace=True)
+            grade.infer_objects(copy=False)
+            grade.replace('B', np.nan, inplace=True)
+            grade.dropna(axis=0, how='all', inplace=True)
 
-            # FIXME: the only NaN is grade
-            grade.fillna(' ', inplace=True)
+            # FIXME: the only nan is grade
+            grade.fillna(' ', inplace=True, downcast='infer')
 
             # FIXME: workaround to drop 'sum' row
             dropIndex = [i for i in grade.index.values if isinstance(i, int)]
@@ -108,7 +111,7 @@ class summary(tk.Frame):
 
         _output = _col + '\n--------\n' + content
         # workaround: align table
-        _output = re.sub(r'^(\w\w)\s', r'\1  ', _output, flags=re.M)
+        # _output = re.sub(r'^(\w\w)\s', r'\1  ', _output, flags=re.M)
 
         self._wg_output.delete(1.0, tk.END)
         self._wg_output.insert(1.0, _output)
